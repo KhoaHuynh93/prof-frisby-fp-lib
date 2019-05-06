@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism-dark.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Task of prompt</h2>
+      <pre>
+        <code class="language-javascript">
+          // prompt for user to input a number -> add 3 -> multiple it by 2, and console.log it out
+          let promptTask = compose(Task.of, prompt);
+          let process = compose(mult(2), add(3));
+          // all the side effect to the edge
+          promptTask().map(process).fork(undefined, console.log);
+          // console.log can be replaced with any side effect
+        </code>
+      </pre>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
+    <script src="../fp.module.js"></script>
+    <script>
+      let promptTask = compose(Task.of, prompt);
+      let process = compose(mult(2), add(3));
+      promptTask().map(process).fork(undefined, console.log);
+    </script>
+  </body>
+</html>

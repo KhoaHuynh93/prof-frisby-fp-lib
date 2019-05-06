@@ -133,65 +133,9 @@ let maybe = curry((v, f, m) => { if (m.isNothing) { return v; } return f(m.$valu
 let nothing = () => Maybe.of(null);
 let reject = a => Task.rejected(a);
 let createCompose = curry((F, G) => class Compose {
-  constructor(x) { this.$value = x; }
+  constructor (x) { this.$value = x; }
   inspect() { return `Compose(${inspect(this.$value)})`;}
   static of(x) { return new Compose(F(G(x)));}
   map(fn) { return new Compose(this.$value.map(x => x.map(fn)));}
   ap(f) {return f.map(this.$value);}}
 );
-
-// module.exports = {
-//   compose,
-//   curry,
-//   always,
-//   add,
-//   mult,
-//   concat,
-//   eq,
-//   filter,
-//   flip,
-//   forEach,
-//   head,
-//   intercalate,
-//   map,
-//   match,
-//   prop,
-//   reduce,
-//   replace,
-//   reverse,
-//   sortBy,
-//   split,
-//   take,
-//   toLowerCase,
-//   toString,
-//   toUpperCase,
-//   identity,
-//   chain,
-//   join,
-//   last,
-//   lineMap,
-//   safeHead,
-//   safeLast,
-//   safeProp,
-//   sequence,
-//   traverse,
-//   unsafePerformIO,
-//   either,
-//   inspect,
-//   left,
-//   liftA2,
-//   liftA3,
-//   maybe,
-//   nothing,
-//   reject,
-//   createCompose,
-//   Identity,
-//   Maybe,
-//   Either,
-//   Left,
-//   Right,
-//   IO,
-//   List,
-//   Map,
-//   Task
-// }
